@@ -1,0 +1,63 @@
+[
+  {
+    "id": "itm_samosa",
+    "name": "Samosa",
+    "category": "Snacks",
+    "pricePaise": 150
+  },
+  { "id": "itm_chai", "name": "Chai", "category": "Drinks", "pricePaise": 100 },
+  {
+    "id": "itm_cold_drink",
+    "name": "Cold Drink",
+    "category": "Drinks",
+    "pricePaise": 300
+  },
+  {
+    "id": "itm_sandwich",
+    "name": "Sandwich",
+    "category": "Snacks",
+    "pricePaise": 400
+  },
+  {
+    "id": "itm_momo",
+    "name": "Veg Momo",
+    "category": "Snacks",
+    "pricePaise": 600
+  },
+  {
+    "id": "itm_tea_masala",
+    "name": "Masala Tea",
+    "category": "Drinks",
+    "pricePaise": 150
+  },
+  {
+    "id": "itm_lassi",
+    "name": "Lassi",
+    "category": "Drinks",
+    "pricePaise": 350
+  },
+  {
+    "id": "itm_biscuits",
+    "name": "Biscuits",
+    "category": "Snacks",
+    "pricePaise": 200
+  },
+  {
+    "id": "itm_brownie",
+    "name": "Brownie",
+    "category": "Desserts",
+    "pricePaise": 500
+  },
+  {
+    "id": "itm_icecream",
+    "name": "Ice Cream",
+    "category": "Desserts",
+    "pricePaise": 450
+  },
+  {
+    "id": "itm_special_thali",
+    "name": "Special Thali",
+    "category": "Specials",
+    "pricePaise": 1200
+  }
+]
