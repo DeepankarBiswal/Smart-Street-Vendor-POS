@@ -114,6 +114,15 @@
         drawer.classList.add("translate-y-full");
       });
     </script>
+    <!-- Register the service worker -->
+     <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(console.error);
+  });
+}
+</script>
+
   </body>
 </html>
 <script type="module" src="./app.js"></script>
