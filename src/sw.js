@@ -1,73 +1,75 @@
-// sw.js
-const CACHE_NAME = "svpos-cache-v1";
+// frontend/sw.js
+const CACHE_NAME = "svpos-cache-v4";
 const CORE_ASSETS = [
-  "/", // if served from site root; see note below
-  "/index.html",
-  "/summary.html",
-  "/app.js",
-  "/catalog.js",
-  "/cart.js",
-  "/orders.js",
-  "/money.js",
-  "/summary.js",
-  "/assets/items.json",
-  // "https://cdn.tailwindcss.com", // external; some browsers block caching cross-origin, but we keep it here
+  "index.html",
+  "summary.html",
+  "src/app.js",
+  "src/catalog.js",
+  "src/cart.js",
+  "src/orders.js",
+  "src/money.js",
+  "src/summary.js",
+  "src/assets/items.json", // ensure this file actually exists at this path
 ];
 
-// On install: cache core assets
+// Install: cache assets individually; skip any that fail
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => cache.addAll(CORE_ASSETS))
-      .then(self.skipWaiting())
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      for (const url of CORE_ASSETS) {
+        try {
+          const res = await fetch(url, { cache: "no-cache" });
+          if (res.ok) await cache.put(url, res.clone());
+          else console.warn("[SW] skip (status)", url, res.status);
+        } catch (e) {
+          console.warn("[SW] skip (fetch)", url, e.message);
+        }
+      }
+      await self.skipWaiting();
+    })()
   );
 });
 
-// On activate: cleanup old caches
+// Activate: clean old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) =>
-        Promise.all(
-          keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
-        )
-      )
-      .then(() => self.clients.claim())
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+      );
+      await self.clients.claim();
+    })()
   );
 });
 
-// Fetch handler
+// Fetch: same‑origin only, with strategies
 self.addEventListener("fetch", (event) => {
   const req = event.request;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
 
-  // Cache-first for same-origin app shell files
   if (
-    req.method === "GET" &&
-    new URL(req.url).origin === self.location.origin
-  ) {
-    if (
-      CORE_ASSETS.includes(new URL(req.url).pathname) ||
-      req.destination === "document" ||
-      req.destination === "script" ||
-      req.destination === "style"
-    ) {
-      event.respondWith(cacheFirst(req));
-      return;
-    }
-  }
-
-  // Stale-while-revalidate for items.json
-  if (
-    req.url.endsWith("/src/assets/items.json") ||
-    req.url.endsWith("/assets/items.json")
+    url.pathname.endsWith("/src/assets/items.json") ||
+    url.pathname.endsWith("/assets/items.json")
   ) {
     event.respondWith(staleWhileRevalidate(req));
     return;
   }
 
-  // Default: network first with fallback to cache
+  const shellSet = new Set(CORE_ASSETS.map((p) => "/" + p));
+  if (
+    req.method === "GET" &&
+    (shellSet.has(url.pathname) ||
+      req.destination === "document" ||
+      req.destination === "script" ||
+      req.destination === "style")
+  ) {
+    event.respondWith(cacheFirst(req));
+    return;
+  }
+
   event.respondWith(networkFirst(req));
 });
 
@@ -83,13 +85,13 @@ async function cacheFirst(req) {
 async function staleWhileRevalidate(req) {
   const cache = await caches.open(CACHE_NAME);
   const cached = await cache.match(req);
-  const networkPromise = fetch(req)
+  const fetchPromise = fetch(req)
     .then((res) => {
       cache.put(req, res.clone());
       return res;
     })
     .catch(() => cached);
-  return cached || networkPromise;
+  return cached || fetchPromise;
 }
 
 async function networkFirst(req) {

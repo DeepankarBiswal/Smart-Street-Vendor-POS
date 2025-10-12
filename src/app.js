@@ -3,6 +3,8 @@ import { formatINR } from "./money.js";
 import { loadCatalog, setCategory, setQuery, onItemClick } from "./catalog.js";
 import { Cart } from "./cart.js";
 import { createOrderFromCart, totalsFromCart, config } from "./orders.js";
+import { exportAll, importAll } from "./orders.js";
+
 
 import {
   
@@ -178,3 +180,44 @@ payUpiBtn.addEventListener('click', () => doCheckout('UPI'));
 
 // initial render
 renderCart();
+
+//Handlers
+const btnBackup = document.getElementById("btn-backup");
+const fileRestore = document.getElementById("file-restore");
+
+if (btnBackup) {
+  btnBackup.addEventListener("click", () => {
+    const data = exportAll();
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `svpos_backup_${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+}
+
+if (fileRestore) {
+  fileRestore.addEventListener("change", async () => {
+    const file = fileRestore.files?.[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const payload = JSON.parse(text);
+      importAll(payload);
+      // refresh UI with new config and empty cart
+      inpDiscount && (inpDiscount.value = String(config.discountPercent));
+      inpTax && (inpTax.value = String(config.taxPercent));
+      cart.clear();
+      renderCart();
+      alert("Restore complete");
+    } catch (e) {
+      alert("Restore failed: " + e.message);
+    } finally {
+      fileRestore.value = "";
+    }
+  });
+}

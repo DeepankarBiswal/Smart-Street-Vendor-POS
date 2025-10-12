@@ -80,3 +80,25 @@ export function getOrdersByDate(yyyyMmDd) {
   const all = loadAll();
   return all.filter((o) => o.createdAt.startsWith(yyyyMmDd));
 }
+
+//helpers
+
+export function exportAll() {
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    orders: JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]"),
+    config,
+  };
+}
+
+export function importAll(payload) {
+  if (!payload || typeof payload !== "object")
+    throw new Error("Invalid backup");
+  const orders = Array.isArray(payload.orders) ? payload.orders : [];
+  localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+  if (payload.config && typeof payload.config === "object") {
+    localStorage.setItem(CONFIG_KEY, JSON.stringify(payload.config));
+    Object.assign(config, payload.config);
+  }
+}

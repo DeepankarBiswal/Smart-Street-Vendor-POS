@@ -69,3 +69,63 @@ function refresh() {
 
 refreshBtn.addEventListener("click", refresh);
 window.addEventListener("load", refresh);
+
+//csv export
+// import { getOrdersByDate } from "./orders.js";
+
+function toCSV(rows) {
+  const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+  const header = [
+    "order_id",
+    "created_at",
+    "payment",
+    "item_id",
+    "item_name",
+    "qty",
+    "unit_paise",
+    "line_paise",
+    "subtotal",
+    "discount",
+    "tax",
+    "total",
+  ];
+  const lines = [header.join(",")];
+  rows.forEach((r) => lines.push(header.map((k) => esc(r[k] ?? "")).join(",")));
+  return lines.join("\n");
+}
+
+function ordersToRows(orders) {
+  const rows = [];
+  orders.forEach((o) => {
+    o.items.forEach((l) => {
+      rows.push({
+        order_id: o.id,
+        created_at: o.createdAt,
+        payment: o.paymentMethod,
+        item_id: l.itemId,
+        item_name: l.name,
+        qty: l.qty,
+        unit_paise: l.unitPaise,
+        line_paise: l.unitPaise * l.qty,
+        subtotal: o.subtotal,
+        discount: o.discount,
+        tax: o.tax,
+        total: o.total,
+      });
+    });
+  });
+  return rows;
+}
+
+document.getElementById("export-csv").addEventListener("click", () => {
+  const day = dateEl.value;
+  const orders = getOrdersByDate(day);
+  const csv = toCSV(ordersToRows(orders));
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `svpos_${day}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
