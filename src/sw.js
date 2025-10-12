@@ -3,6 +3,7 @@ const CACHE_NAME = "svpos-cache-v4";
 const CORE_ASSETS = [
   "index.html",
   "summary.html",
+  "receipt.html",
   "src/app.js",
   "src/catalog.js",
   "src/cart.js",

@@ -155,26 +155,12 @@ document.querySelectorAll("nav [data-category]").forEach((btn) => {
 searchEl.addEventListener("input", (e) => setQuery(e.target.value));
 
 // checkout handler
-// function doCheckout(method) {
-//   if (cart.lines.length === 0) return;
-//   const order = createOrderFromCart(cart, method);
-//   // Simple receipt preview
-//   alert(
-//     `Order ${order.id}\nItems: ${order.items.length}\nTotal: ${formatINR(
-//       order.total
-//     )}\nPaid: ${method}`
-//   );
-//   cart.clear();
-//   renderCart();
-//   // Close drawer after checkout
-//   //   cartDrawer.classList.add('translate-y-full');
-// }
 function doCheckout(method) {
   if (cart.lines.length === 0) return;
   const order = createOrderFromCart(cart, method);
   // Optional: open receipt in new tab
   // After createOrderFromCart(cart, method)
-  window.open(`./receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
+  window.open(`../receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
 
   cart.clear();
   renderCart();
