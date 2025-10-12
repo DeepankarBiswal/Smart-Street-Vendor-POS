@@ -5,21 +5,13 @@ import { Cart } from "./cart.js";
 import { createOrderFromCart, totalsFromCart, config } from "./orders.js";
 import { exportAll, importAll } from "./orders.js";
 
-
-import {
-  
-  setDiscountPercent,
-  setTaxPercent,
-} from "./orders.js";
+import { setDiscountPercent, setTaxPercent } from "./orders.js";
 
 const inpDiscount = document.getElementById("inp-discount");
 const inpTax = document.getElementById("inp-tax");
 
 inpDiscount.value = String(config.discountPercent);
 inpTax.value = String(config.taxPercent);
-
-
-
 
 const subtotalEl = document.getElementById("cart-subtotal");
 const discountPctEl = document.getElementById("cart-discount-pct");
@@ -29,7 +21,6 @@ const taxEl = document.getElementById("cart-tax");
 const cartTotalEl = document.getElementById("cart-total");
 const payCashBtn = document.getElementById("pay-cash");
 const payUpiBtn = document.getElementById("pay-upi");
-
 
 const posDateEl = document.getElementById("pos-date");
 const posTotalEl = document.getElementById("pos-total");
@@ -84,7 +75,6 @@ inpTax.addEventListener("input", () => {
   setTaxPercent(v);
   renderTotals();
 });
-
 
 function renderCart() {
   if (cart.lines.length === 0) {
@@ -165,18 +155,34 @@ document.querySelectorAll("nav [data-category]").forEach((btn) => {
 searchEl.addEventListener("input", (e) => setQuery(e.target.value));
 
 // checkout handler
+// function doCheckout(method) {
+//   if (cart.lines.length === 0) return;
+//   const order = createOrderFromCart(cart, method);
+//   // Simple receipt preview
+//   alert(
+//     `Order ${order.id}\nItems: ${order.items.length}\nTotal: ${formatINR(
+//       order.total
+//     )}\nPaid: ${method}`
+//   );
+//   cart.clear();
+//   renderCart();
+//   // Close drawer after checkout
+//   //   cartDrawer.classList.add('translate-y-full');
+// }
 function doCheckout(method) {
   if (cart.lines.length === 0) return;
   const order = createOrderFromCart(cart, method);
-  // Simple receipt preview
-  alert(`Order ${order.id}\nItems: ${order.items.length}\nTotal: ${formatINR(order.total)}\nPaid: ${method}`);
+  // Optional: open receipt in new tab
+  // After createOrderFromCart(cart, method)
+  window.open(`./receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
+
   cart.clear();
   renderCart();
-  // Close drawer after checkout
-  cartDrawer.classList.add('translate-y-full');
+  cartDrawer.classList.add("translate-y-full");
 }
-payCashBtn.addEventListener('click', () => doCheckout('CASH'));
-payUpiBtn.addEventListener('click', () => doCheckout('UPI'));
+
+payCashBtn.addEventListener("click", () => doCheckout("CASH"));
+payUpiBtn.addEventListener("click", () => doCheckout("UPI"));
 
 // initial render
 renderCart();
