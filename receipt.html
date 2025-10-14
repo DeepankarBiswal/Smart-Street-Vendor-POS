@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Receipt</title>
+    <!-- <link rel="stylesheet" href="./src/output.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @media print {
@@ -58,10 +59,16 @@
       <p id="rcpt-note" class="text-[11px] text-slate-500 mt-2"></p>
 
       <div class="no-print mt-3 grid grid-cols-2 gap-2">
-  <button id="btn-print" class="bg-slate-900 text-white py-2 rounded-md">Print</button>
-  <button id="btn-share" class="bg-emerald-600 text-white py-2 rounded-md">Share</button>
-</div>
-
+        <button id="btn-print" class="bg-slate-900 text-white py-2 rounded-md">
+          Print
+        </button>
+        <button
+          id="btn-share"
+          class="bg-emerald-600 text-white py-2 rounded-md"
+        >
+          Share
+        </button>
+      </div>
     </main>
 
     <script type="module" src="./src/receipt.js"></script>

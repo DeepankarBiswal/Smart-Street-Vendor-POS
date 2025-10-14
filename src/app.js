@@ -10,6 +10,8 @@ import { setDiscountPercent, setTaxPercent } from "./orders.js";
 const inpDiscount = document.getElementById("inp-discount");
 const inpTax = document.getElementById("inp-tax");
 
+const btnPrintLast = document.getElementById("btn-print-last");
+
 inpDiscount.value = String(config.discountPercent);
 inpTax.value = String(config.taxPercent);
 
@@ -213,3 +215,29 @@ if (fileRestore) {
     }
   });
 }
+
+//last receipt print button handlers
+// const btnPrintLast = document.getElementById("btn-print-last");
+
+function getLastOrderId() {
+  try {
+    const all = JSON.parse(localStorage.getItem("svpos.orders.v1") || "[]");
+    if (!Array.isArray(all) || all.length === 0) return null;
+    const last = all[all.length - 1];
+    return last?.id ?? null;
+  } catch {
+    return null;
+  }
+}
+
+if (btnPrintLast) {
+  btnPrintLast.addEventListener("click", () => {
+    const id = getLastOrderId(); // get the id here
+    if (!id) {
+      alert("No previous receipt found.");
+      return;
+    }
+    window.open(`../receipt.html?id=${encodeURIComponent(id)}`, "_blank"); // use id, not order.id
+  });
+}
+

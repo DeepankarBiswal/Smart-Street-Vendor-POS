@@ -2,15 +2,15 @@
 const CACHE_NAME = "svpos-cache-v4";
 const CORE_ASSETS = [
   "index.html",
-  "summary.html",
-  "receipt.html",
-  "src/app.js",
-  "src/catalog.js",
-  "src/cart.js",
-  "src/orders.js",
-  "src/money.js",
-  "src/summary.js",
-  "src/assets/items.json", // ensure this file actually exists at this path
+  "../summary.html",
+  "../receipt.html",
+  "app.js",
+  "catalog.js",
+  "cart.js",
+  "orders.js",
+  "money.js",
+  "summary.js",
+  "assets/items.json", // ensure this file actually exists at this path
 ];
 
 // Install: cache assets individually; skip any that fail
