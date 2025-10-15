@@ -166,6 +166,7 @@ function doCheckout(method) {
 
   cart.clear();
   renderCart();
+  renderRecentOrders(); // refresh recent list
   cartDrawer.classList.add("translate-y-full");
 }
 
@@ -174,6 +175,120 @@ payUpiBtn.addEventListener("click", () => doCheckout("UPI"));
 
 // initial render
 renderCart();
+
+// Tabs
+const tabCart = document.getElementById("tab-cart");
+const tabRecent = document.getElementById("tab-recent");
+const panelCart = document.getElementById("panel-cart");
+const panelRecent = document.getElementById("panel-recent");
+
+function activateTab(which) {
+  const onCart = which === "cart";
+  panelCart.classList.toggle("hidden", !onCart);
+  panelRecent.classList.toggle("hidden", onCart);
+
+  tabCart.classList.toggle("bg-slate-900", onCart);
+  tabCart.classList.toggle("text-white", onCart);
+  tabCart.classList.toggle("bg-slate-100", !onCart);
+  tabCart.classList.toggle("text-slate-700", !onCart);
+
+  tabRecent.classList.toggle("bg-slate-900", !onCart);
+  tabRecent.classList.toggle("text-white", !onCart);
+  tabRecent.classList.toggle("bg-slate-100", onCart);
+  tabRecent.classList.toggle("text-slate-700", onCart);
+
+  if (!onCart) renderRecentOrders();
+}
+
+tabCart?.addEventListener("click", () => activateTab("cart"));
+tabRecent?.addEventListener("click", () => activateTab("recent"));
+
+//load and render the recent orders
+function loadAllOrders() {
+  try {
+    return JSON.parse(localStorage.getItem("svpos.orders.v1") || "[]");
+  } catch {
+    return [];
+  }
+}
+function lastFiveOrders() {
+  const all = loadAllOrders();
+  return all.slice(-5).reverse();
+}
+function fmtTime(iso) {
+  try {
+    return new Date(iso).toLocaleString();
+  } catch {
+    return "-";
+  }
+}
+function renderRecentOrders() {
+  const host = document.getElementById("recent-orders");
+  if (!host) return;
+  const list = lastFiveOrders();
+  if (list.length === 0) {
+    host.innerHTML =
+      '<div class="p-3 text-slate-500 text-sm">No orders yet.</div>';
+    return;
+  }
+  host.innerHTML = list
+    .map(
+      (o) => `
+    <div class="py-2 flex items-center justify-between">
+      <div class="min-w-0">
+        <div class="text-sm font-medium truncate">${o.id}</div>
+        <div class="text-xs text-slate-500">${fmtTime(o.createdAt)}</div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="text-sm font-semibold">${formatINR(o.total)}</div>
+        <button class="print-order px-2 py-1 text-xs rounded bg-slate-200 text-slate-900" data-id="${
+          o.id
+        }">
+          Print
+        </button>
+      </div>
+    </div>
+  `
+    )
+    .join("");
+}
+//Handlers for refreshing the recent drawer
+document.getElementById("recent-orders")?.addEventListener("click", (e) => {
+  const btn = e.target.closest("button.print-order");
+  if (!btn) return;
+  const id = btn.getAttribute("data-id");
+  if (id) window.open(`../receipt.html?id=${encodeURIComponent(id)}`, "_blank");
+});
+
+document
+  .getElementById("btn-recent-refresh")
+  ?.addEventListener("click", renderRecentOrders);
+//default cart when the page loads
+activateTab("cart");
+
+const Recent = {
+  loadAll() {
+    try {
+      return JSON.parse(localStorage.getItem("svpos.orders.v1") || "[]");
+    } catch {
+      return [];
+    }
+  },
+  lastFive() {
+    const all = Recent.loadAll();
+    return all.slice(-5).reverse();
+  },
+  fmtTime(iso) {
+    try {
+      return new Date(iso).toLocaleString();
+    } catch {
+      return "-";
+    }
+  },
+};
+
+// Expose for console/debug
+window.Recent = Recent;
 
 //Handlers
 const btnBackup = document.getElementById("btn-backup");

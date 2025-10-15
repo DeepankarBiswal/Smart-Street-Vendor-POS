@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Smart Vendor POS</title>
-    <!-- <link rel="stylesheet" href="./output.css" /> -->
+    <link rel="stylesheet" href="./output.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <script type="module" src="./app.js"></script>
@@ -22,10 +22,12 @@
         <p class="text-xs text-slate-500">Total</p>
         <p id="pos-total" class="text-2xl font-bold">₹0.00</p>
       </div>
-      <a href="../summary.html"
-   class="block bg-amber-50 text-amber-800 text-center text-xs py-2 border-b border-amber-200 hover:bg-amber-100">
-  Today’s summary: View revenue, orders, and top items →
-</a>
+      <a
+        href="../summary.html"
+        class="block bg-amber-50 text-amber-800 text-center text-xs py-2 border-b border-amber-200 hover:bg-amber-100"
+      >
+        Today’s summary: View revenue, orders, and top items →
+      </a>
     </header>
 
     <!-- Category Tabs -->
@@ -82,6 +84,7 @@
       </div>
     </nav>
 
+   
     <!-- Item Grid -->
     <main
       class="p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
@@ -101,105 +104,97 @@
       class="fixed inset-x-0 bottom-0 translate-y-full transition-transform duration-200 bg-white border-t border-slate-200 shadow-2xl"
     >
       <!-- Drawer header -->
-      <div class="p-3 flex items-center justify-between">
-        <h2 class="font-semibold">Cart</h2>
-        <button id="close-cart" class="text-slate-600">Close</button>
-      </div>
-
-      <!-- Cart items list -->
-      <div class="max-h-64 overflow-y-auto divide-y divide-slate-200">
-        <div class="p-3 text-slate-500 text-sm">No items yet</div>
-      </div>
-
-      <!-- Totals and actions -->
-      <div class="p-3 border-t border-slate-200">
-        <div class="flex items-center justify-between text-sm text-slate-600">
-          <span>Subtotal</span>
-          <span id="cart-subtotal">₹0.00</span>
-        </div>
-
-        <div class="flex items-center justify-between text-sm text-slate-600">
-          <label for="inp-discount" class="flex items-center gap-2">
-            <span>Discount</span>
-            <input
-              id="inp-discount"
-              type="number"
-              min="0"
-              max="100"
-              step="1"
-              class="w-16 px-2 py-1 rounded bg-slate-100 text-slate-800 text-right"
-            />
-            <span>%</span>
-          </label>
-          <span id="cart-discount">- ₹0.00</span>
-        </div>
-
-        <div class="flex items-center justify-between text-sm text-slate-600">
-          <label for="inp-tax" class="flex items-center gap-2">
-            <span>Tax</span>
-            <input
-              id="inp-tax"
-              type="number"
-              min="0"
-              max="100"
-              step="1"
-              class="w-16 px-2 py-1 rounded bg-slate-100 text-slate-800 text-right"
-            />
-            <span>%</span>
-          </label>
-          <span id="cart-tax">₹0.00</span>
-        </div>
-
-        <div
-          class="flex items-center justify-between text-lg font-semibold mt-1"
-        >
-          <span>Total</span>
-          <span id="cart-total">₹0.00</span>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button
-            id="pay-cash"
-            class="bg-emerald-600 text-white py-2 rounded-md"
-          >
-            Cash
-          </button>
-          <button id="pay-upi" class="bg-indigo-600 text-white py-2 rounded-md">
-            UPI
-          </button>
-        </div>
-
-        <!-- Print last receipt -->
-        <div class="mt-3">
-          <button
-            id="btn-print-last"
-            class="w-full bg-slate-200 text-slate-900 py-2 rounded-md"
-          >
-            Print last receipt
-          </button>
-        </div>
-
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button
-            id="btn-backup"
-            class="bg-slate-200 text-slate-900 py-2 rounded-md"
-          >
-            Backup
-          </button>
-          <label
-            for="file-restore"
-            class="bg-slate-900 text-white py-2 rounded-md text-center cursor-pointer"
-            >Restore</label
-          >
-          <input
-            id="file-restore"
-            type="file"
-            accept="application/json"
-            class="hidden"
-          />
+      <!-- Drawer header with tabs -->
+      <div class="p-3 border-b border-slate-200">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-2">
+            <button
+              id="tab-cart"
+              class="px-3 py-1 rounded-md bg-slate-900 text-white text-sm"
+            >
+              Cart
+            </button>
+            <button
+              id="tab-recent"
+              class="px-3 py-1 rounded-md bg-slate-100 text-slate-700 text-sm"
+            >
+              Recent
+            </button>
+          </div>
+          <button id="close-cart" class="text-slate-600">Close</button>
         </div>
       </div>
-    </section>
+<!-- Cart panel (default visible) -->
+<div id="panel-cart">
+  <!-- Cart items list -->
+  <div class="max-h-64 overflow-y-auto divide-y divide-slate-200">
+    <div class="p-3 text-slate-500 text-sm">No items yet</div>
+  </div>
+
+  <!-- Totals and actions -->
+  <div class="p-3 border-t border-slate-200">
+    <div class="flex items-center justify-between text-sm text-slate-600">
+      <span>Subtotal</span>
+      <span id="cart-subtotal">₹0.00</span>
+    </div>
+
+    <div class="flex items-center justify-between text-sm text-slate-600">
+      <label for="inp-discount" class="flex items-center gap-2">
+        <span>Discount</span>
+        <input id="inp-discount" type="number" min="0" max="100" step="1"
+               class="w-16 px-2 py-1 rounded bg-slate-100 text-slate-800 text-right" />
+        <span>%</span>
+      </label>
+      <span id="cart-discount">- ₹0.00</span>
+    </div>
+
+    <div class="flex items-center justify-between text-sm text-slate-600">
+      <label for="inp-tax" class="flex items-center gap-2">
+        <span>Tax</span>
+        <input id="inp-tax" type="number" min="0" max="100" step="1"
+               class="w-16 px-2 py-1 rounded bg-slate-100 text-slate-800 text-right" />
+        <span>%</span>
+      </label>
+      <span id="cart-tax">₹0.00</span>
+    </div>
+
+    <div class="flex items-center justify-between text-lg font-semibold mt-1">
+      <span>Total</span>
+      <span id="cart-total">₹0.00</span>
+    </div>
+
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <button id="pay-cash" class="bg-emerald-600 text-white py-2 rounded-md">Cash</button>
+      <button id="pay-upi" class="bg-indigo-600 text-white py-2 rounded-md">UPI</button>
+    </div>
+
+    <div class="mt-3">
+      <button id="btn-print-last" class="w-full bg-slate-200 text-slate-900 py-2 rounded-md">
+        Print last receipt
+      </button>
+    </div>
+
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <button id="btn-backup" class="bg-slate-200 text-slate-900 py-2 rounded-md">Backup</button>
+      <label for="file-restore" class="bg-slate-900 text-white py-2 rounded-md text-center cursor-pointer">Restore</label>
+      <input id="file-restore" type="file" accept="application/json" class="hidden" />
+    </div>
+  </div>
+</div>
+
+<!-- Recent panel (hidden initially) -->
+<div id="panel-recent" class="hidden">
+  <div class="p-3">
+    <div class="flex items-center justify-between">
+      <h3 class="font-semibold">Recent orders</h3>
+      <button id="btn-recent-refresh" class="text-xs text-slate-600 hover:text-slate-900">Refresh</button>
+    </div>
+  </div>
+  <div id="recent-orders" class="max-h-64 overflow-y-auto divide-y divide-slate-200 px-3 pb-3">
+    <div class="p-3 text-slate-500 text-sm">No orders yet.</div>
+  </div>
+</div>
+
 
     <script>
       // Minimal interactivity for the drawer
