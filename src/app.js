@@ -163,6 +163,20 @@ document.querySelectorAll("nav [data-category]").forEach((btn) => {
 // search
 searchEl.addEventListener("input", (e) => setQuery(e.target.value));
 
+// checkout handler
+function doCheckout(method) {
+  if (cart.lines.length === 0) return;
+  const order = createOrderFromCart(cart, method);
+  // Optional: open receipt in new tab
+  // After createOrderFromCart(cart, method)
+  window.open(`../receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
+
+  cart.clear();
+  renderCart();
+  renderRecentOrders(); // refresh recent list
+  cartDrawer.classList.add("translate-y-full");
+}
+
 payCashBtn.addEventListener("click", () => doCheckout("CASH"));
 payUpiBtn.addEventListener("click", () => doCheckout("UPI"));
 
@@ -324,34 +338,6 @@ if (fileRestore) {
   });
 }
 
-//Checkout Handlers
-async function doCheckout(method) {
-  if (isCheckingOut) return;
-  if (cart.lines.length === 0) return;
-
-  try {
-    isCheckingOut = true;
-    setCheckoutDisabled(true);
-
-    const order = createOrderFromCart(cart, method);
-    window.open(`../receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
-
-    cart.clear();
-    renderCart();
-    // If you added Recent tab earlier, this refresh keeps it up to date:
-    if (typeof renderRecentOrders === "function") {
-      renderRecentOrders();
-    }
-    cartDrawer.classList.add("translate-y-full");
-  } finally {
-    // small delay prevents very fast double taps from re-enabling too soon
-    setTimeout(() => {
-      isCheckingOut = false;
-      setCheckoutDisabled(false);
-    }, 400);
-  }
-}
-
 //last receipt print button handlers
 // const btnPrintLast = document.getElementById("btn-print-last");
 
@@ -376,3 +362,4 @@ if (btnPrintLast) {
     window.open(`../receipt.html?id=${encodeURIComponent(id)}`, "_blank"); // use id, not order.id
   });
 }
+

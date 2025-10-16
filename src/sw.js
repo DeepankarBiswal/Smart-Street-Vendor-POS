@@ -1,7 +1,7 @@
 // frontend/sw.js
 const CACHE_NAME = "svpos-cache-v4";
 const CORE_ASSETS = [
-  "index.html",
+  "../index.html",
   "../summary.html",
   "../receipt.html",
   "app.js",

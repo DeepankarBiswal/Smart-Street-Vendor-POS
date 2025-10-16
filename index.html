@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Smart Vendor POS</title>
-    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./src/output.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <script type="module" src="./app.js"></script>
-  <script type="module" src="./money.js"></script>
+  <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/money.js"></script>
   <body class="bg-slate-50 text-slate-900">
     <!-- Header -->
     <header
@@ -23,7 +23,7 @@
         <p id="pos-total" class="text-2xl font-bold">₹0.00</p>
       </div>
       <a
-        href="../summary.html"
+        href="./summary.html"
         class="block bg-amber-50 text-amber-800 text-center text-xs py-2 border-b border-amber-200 hover:bg-amber-100"
       >
         Today’s summary: View revenue, orders, and top items →
@@ -210,10 +210,10 @@
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js").catch(console.error);
+          navigator.serviceWorker.register("./src/sw.js").catch(console.error);
         });
       }
     </script>
   </body>
 </html>
-<script type="module" src="./app.js"></script>
+<script type="module" src="./src/app.js"></script>

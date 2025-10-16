@@ -8,7 +8,7 @@ let activeCategory = 'All';
 let currentQuery = '';
 
 export async function loadCatalog() {
-  const res = await fetch('./assets/items.json');
+  const res = await fetch("./src/assets/items.json");
   allItems = await res.json();
   render();
 }
