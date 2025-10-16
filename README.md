@@ -98,7 +98,7 @@ Notes:
 - Summary screen: KPIs and top items.
 
 ## License
-- MIT (or choose a preferred license).
+- N/A.
 
 ## Acknowledgments
 - Tailwind CSS for rapid UI styling.
