@@ -30,6 +30,13 @@ const openCartBtn = document.getElementById("open-cart");
 const cartDrawer = document.getElementById("cart-drawer");
 const cartListEl = cartDrawer.querySelector(".max-h-64");
 const searchEl = document.getElementById("search");
+const basePath = location.pathname.endsWith("/")
+  ? location.pathname
+  : location.pathname.replace(/[^/]+$/, "");
+
+const p = location.pathname.endsWith("/")
+  ? location.pathname
+  : location.pathname.replace(/[^/]+$/, "");
 
 let isCheckingOut = false;
 function setCheckoutDisabled(disabled) {
@@ -169,7 +176,12 @@ function doCheckout(method) {
   const order = createOrderFromCart(cart, method);
   // Optional: open receipt in new tab
   // After createOrderFromCart(cart, method)
-  window.open(`../receipt.html?id=${encodeURIComponent(order.id)}`, "_blank");
+  window.open(
+    `${location.origin}${basePath}receipt.html?id=${encodeURIComponent(
+      order.id
+    )}`,
+    "_blank"
+  );
 
   cart.clear();
   renderCart();
@@ -359,7 +371,9 @@ if (btnPrintLast) {
       alert("No previous receipt found.");
       return;
     }
-    window.open(`../receipt.html?id=${encodeURIComponent(id)}`, "_blank"); // use id, not order.id
+    window.open(
+      `${location.origin}${p}receipt.html?id=${encodeURIComponent(id)}`,
+      "_blank"
+    ); // use id, not order.id
   });
 }
-
