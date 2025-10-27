@@ -1,63 +1,668 @@
 [
   {
-    "id": "itm_samosa",
-    "name": "Samosa",
-    "category": "Snacks",
-    "pricePaise": 150
-  },
-  { "id": "itm_chai", "name": "Chai", "category": "Drinks", "pricePaise": 100 },
-  {
-    "id": "itm_cold_drink",
-    "name": "Cold Drink",
-    "category": "Drinks",
-    "pricePaise": 300
+    "id": "itm_shio_ramen",
+    "name": "Shio Ramen",
+    "category": "Ramen",
+    "pricePaise": 22000
   },
   {
-    "id": "itm_sandwich",
-    "name": "Sandwich",
-    "category": "Snacks",
-    "pricePaise": 400
+    "id": "itm_miso_ramen",
+    "name": "Miso Ramen",
+    "category": "Ramen",
+    "pricePaise": 32500
   },
   {
-    "id": "itm_momo",
-    "name": "Veg Momo",
-    "category": "Snacks",
-    "pricePaise": 600
+    "id": "itm_paitan_ramen",
+    "name": "Paitan Ramen",
+    "category": "Ramen",
+    "pricePaise": 25000
   },
   {
-    "id": "itm_tea_masala",
-    "name": "Masala Tea",
-    "category": "Drinks",
-    "pricePaise": 150
+    "id": "itm_stir_fried_ramen",
+    "name": "Stirfried Ramen",
+    "category": "Ramen",
+    "pricePaise": 27500
   },
   {
-    "id": "itm_lassi",
-    "name": "Lassi",
-    "category": "Drinks",
-    "pricePaise": 350
+    "id": "itm_steamed_gyoza",
+    "name": "Steamed Gyoza",
+    "category": "Dumplings",
+    "pricePaise": 8000
   },
   {
-    "id": "itm_biscuits",
-    "name": "Biscuits",
-    "category": "Snacks",
-    "pricePaise": 200
+    "id": "itm_grilled_gyoza",
+    "name": "Grilled Gyoza",
+    "category": "Dumplings",
+    "pricePaise": 9000
   },
   {
-    "id": "itm_brownie",
-    "name": "Brownie",
-    "category": "Desserts",
-    "pricePaise": 500
+    "id": "itm_fried_gyoza",
+    "name": "Fried Gyoza",
+    "category": "Dumplings",
+    "pricePaise": 9000
   },
   {
-    "id": "itm_icecream",
-    "name": "Ice Cream",
-    "category": "Desserts",
-    "pricePaise": 450
+    "id": "itm_crispy_goyza",
+    "name": "Crispy Goyza",
+    "category": "Dumplings",
+    "pricePaise": 10000
   },
   {
-    "id": "itm_special_thali",
-    "name": "Special Thali",
-    "category": "Specials",
-    "pricePaise": 1200
+    "id": "itm_Schezwan_dumplings",
+    "name": "Schezwan Dumplings",
+    "category": "Dumplings",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_gyoza_wings",
+    "name": "Gyoza with Wings",
+    "category": "Dumplings",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_wonton_soup",
+    "name": "Wonton Soup",
+    "category": "Dumplings",
+    "pricePaise": 8000
+  },
+  {
+    "id": "itm_wonton_noodle_soup",
+    "name": "Wonton Noodle Soup",
+    "category": "Dumplings",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_fried_wonton",
+    "name": "Fried Wonton",
+    "category": "Dumplings",
+    "pricePaise": 8000
+  },
+  {
+    "id": "itm_sichuan_wonton",
+    "name": "Sichuan Wonton",
+    "category": "Dumplings",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_bao",
+    "name": "Bao",
+    "category": "Dumplings",
+    "pricePaise": 8000
+  },
+  {
+    "id": "itm_honey_lemon_wings_3_pcs",
+    "name": "Honey Lemon Wings (3 pcs)",
+    "category": "Wings",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_honey_lemon_wings_5_pcs",
+    "name": "Honey Lemon Wings (5 pcs)",
+    "category": "Wings",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_honey_lemon_wings_7_pcs",
+    "name": "Honey Lemon Wings (7 pcs)",
+    "category": "Wings",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_garlic_butter_wings_3_pcs",
+    "name": "Garlic Butter wings(3 pcs)",
+    "category": "Wings",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_garlic_butter_wings_5_pcs",
+    "name": "Garlic Butter wings(5 pcs)",
+    "category": "Wings",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_garlic_butter_wings_7_pcs",
+    "name": "Garlic Butter wings(7 pcs)",
+    "category": "Wings",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_korean_hot_wings_3_pcs",
+    "name": "Korean Hot wings(3 pcs)",
+    "category": "Wings",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_korean_hot_wings_5_pcs",
+    "name": "Korean Hot wings(5 pcs)",
+    "category": "Wings",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_korean_hot_wings_7_pcs",
+    "name": "Korean Hot wings(7 pcs)",
+    "category": "Wings",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_barbeque_wings_3_pcs",
+    "name": "Barbeque Wings (3 pcs)",
+    "category": "Wings",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_barbeque_wings_5_pcs",
+    "name": "Barbeque Wings (5 pcs)",
+    "category": "Wings",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_barbeque_wings_7_pcs",
+    "name": "Barbeque Wings (7 pcs)",
+    "category": "Wings",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_crispy_wings_3_pcs",
+    "name": "Cripsy Wings (3 pcs)",
+    "category": "Wings",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_crispy_wings_5_pcs",
+    "name": "Cripsy Wings (5 pcs)",
+    "category": "Wings",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_crispy_wings_7_pcs",
+    "name": "Cripsy Wings (7 pcs)",
+    "category": "Wings",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_paneer_katsu",
+    "name": "Paneer Katsu",
+    "category": "Fried",
+    "pricePaise": 20000
+  },
+  {
+    "id": "itm_chicken_katsu",
+    "name": "Chicken Katsu",
+    "category": "Fried",
+    "pricePaise": 20000
+  },
+  {
+    "id": "itm_chicken_tempura",
+    "name": "Chicken Tempura",
+    "category": "Fried",
+    "pricePaise": 20000
+  },
+  {
+    "id": "itm_fried_chicken_4_pcs",
+    "name": "Fried Chicken (4 pcs)",
+    "category": "Fried",
+    "pricePaise": 9900
+  },
+  {
+    "id": "itm_fried_chicken_6_pcs",
+    "name": "Fried Chicken (6 pcs)",
+    "category": "Fried",
+    "pricePaise": 14900
+  },
+  {
+    "id": "itm_fried_chicken_250_gm",
+    "name": "Fried Chicken (250 gm)",
+    "category": "Fried",
+    "pricePaise": 20000
+  },
+  {
+    "id": "itm_fried_chicken_500_gm",
+    "name": "Fried Chicken (500 gm)",
+    "category": "Fried",
+    "pricePaise": 36000
+  },
+  {
+    "id": "itm_barbeque_chicken_half",
+    "name": "Fried Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 13000
+  },
+  {
+    "id": "itm_barbeque_chicken_full",
+    "name": "Fried Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_barbeque_paneer_half",
+    "name": "Fried Paneer (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 13000
+  },
+  {
+    "id": "itm_barbeque_paneer_full",
+    "name": "Fried Paneer (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_honey_lemon_chicken_half",
+    "name": "Honey Lemon Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 14000
+  },
+  {
+    "id": "itm_honey_lemon_chicken_full",
+    "name": "Honey Lemon Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_honey_lemon_Paneer_half",
+    "name": "Honey Lemon Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 14000
+  },
+  {
+    "id": "itm_honey_lemon_Paneer_full",
+    "name": "Honey Lemon Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_sesame_garlic_chicken_half",
+    "name": "Seasame Garlic Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 14000
+  },
+  {
+    "id": "itm_sesame_garlic_chicken_full",
+    "name": "Seasame Garlic Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_sesame_garlic_paneer_half",
+    "name": "Seasame Garlic Paneer (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 14000
+  },
+  {
+    "id": "itm_sesame_garlic_paneer_full",
+    "name": "Seasame Garlic Paneer (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_teriyaki_chicken_half",
+    "name": "Teriyaki Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_teriyaki_chicken_full",
+    "name": "Teriyaki Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 35000
+  },
+  {
+    "id": "itm_teriyaki_paneer_half",
+    "name": "Teriyaki Paneer (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 18000
+  },
+  {
+    "id": "itm_teriyaki_paneer_full",
+    "name": "Teriyaki Paneer (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 35000
+  },
+  {
+    "id": "itm_teriyaki_paneer_full",
+    "name": "Teriyaki Paneer (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 35000
+  },
+  {
+    "id": "itm_kungpao_chicken_half",
+    "name": "Kung pao Chicken (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 16000
+  },
+  {
+    "id": "itm_kungpao_chicken_full",
+    "name": "Kung pao Chicken (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 30000
+  },
+  {
+    "id": "itm_kungpao_paneer_half",
+    "name": "Kung pao Paneer (Half)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 16000
+  },
+  {
+    "id": "itm_kungpao_paneer_full",
+    "name": "Kung pao Paneer (Full)",
+    "category": "Tossed & Saucy",
+    "pricePaise": 30000
+  },
+  {
+    "id": "itm_sesame_garlic_noodles_veg",
+    "name": "Seasame Garlic Noodles (Veg)",
+    "category": "Noodles",
+    "pricePaise": 22000
+  },
+  {
+    "id": "itm_sesame_garlic_noodles",
+    "name": "Seasame Garlic Noodles",
+    "category": "Noodles",
+    "pricePaise": 22000
+  },
+  {
+    "id": "itm_creamy_udon_noodles_veg",
+    "name": "Creamy Udon Noodles (Veg)",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_creamy_udon_noodles",
+    "name": "Creamy Udon Noodles",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_peanut_noodles_veg",
+    "name": "Peanut Noodles (Veg)",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_peanut_noodles",
+    "name": "Peanut Noodles",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_japchae_noodles_veg",
+    "name": "Japchae Noodles (Veg)",
+    "category": "Noodles",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_japchae_noodles",
+    "name": "Japchae Noodles",
+    "category": "Noodles",
+    "pricePaise": 27500
+  },
+  {
+    "id": "itm_kimchi_noodles_soup_veg",
+    "name": "Kimchi Noodles Soup (Veg)",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_kimchi_noodles_soup",
+    "name": "Kimchi Noodles Soup",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_fried_kimchi_noodle_veg",
+    "name": "Fried Kimchi Noodles (Veg)",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_fried_kimchi_noodle",
+    "name": "Fried Kimchi Noodles",
+    "category": "Noodles",
+    "pricePaise": 25000
+  },
+  {
+    "id": "itm_boba_milk_tea",
+    "name": "Boba Milk Tea",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_boba_Coffee",
+    "name": "Boba Coffee",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_boba_strawberry",
+    "name": "Strawberry Boba",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_choco_hazelnut_boba",
+    "name": "Choco Hazelnut Boba",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_bluberry_boba",
+    "name": "Blueberry Boba",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_mango_boba",
+    "name": "Mango Boba",
+    "category": "Boba",
+    "pricePaise": 15000
+  },
+  {
+    "id": "itm_strawbery_honey",
+    "name": "Strawberry Honey Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_bluepea_passionfruit",
+    "name": "Bluepea Passion Fruit Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_rose",
+    "name": "Rose Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_mint",
+    "name": "Mint Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_hebiscus",
+    "name": "Hebiscus Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_ginger_lemon",
+    "name": "Ginger Lemon Iced-tea",
+    "category": "Iced-Tea",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_virgin_mojito",
+    "name": "Virgin Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_blue_curacao_mojito",
+    "name": "Blue Curacao Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_cranberry_mojito",
+    "name": "Cranberry Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_greenapple_mojito",
+    "name": "Green Apple Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_sakura_fizz_mojito",
+    "name": "Sakura Fizz Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_pinacolada_mojito",
+    "name": "Pinacolada Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_pinapple_ginger_mojito",
+    "name": "Pinapple Ginger Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_kiwi_blueberry_mojito",
+    "name": "Kiwi Blueberry Mojito",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_watermelon_mojito",
+    "name": "Watermelon Mocking Bird",
+    "category": "Mojito",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_choco_milkshake",
+    "name": "Chocolate Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_vanilla_choco_milkshake",
+    "name": "Vanilla Choco Chips Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_oreo_milkshake",
+    "name": "Oreo Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_kitkat_milkshake",
+    "name": "Kitkat Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_chocho_peanut_milkshake",
+    "name": "Choco Peanut Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_starwberry_milkshake",
+    "name": "Starwberry Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_butterscotch_milkshake",
+    "name": "Butter Scotch Milkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_salted_oaramel_milkshake",
+    "name": "Salted OramelMilkshake",
+    "category": "Milkshake",
+    "pricePaise": 12000
+  },
+  {
+    "id": "itm_regular_hotcoffee",
+    "name": "Regular Coffee",
+    "category": "Coffee",
+    "pricePaise": 4000
+  },
+  {
+    "id": "itm_hazelnut_hotcoffee",
+    "name": "Hazelnut Coffee",
+    "category": "Coffee",
+    "pricePaise": 4000
+  },
+  {
+    "id": "itm_french_vanilla_hotcoffee",
+    "name": "French Vanilla Coffee",
+    "category": "Coffee",
+    "pricePaise": 4000
+  },
+  {
+    "id": "itm_buterscotch_hotcoffee",
+    "name": "Butter Scotch Coffee",
+    "category": "Coffee",
+    "pricePaise": 4000
+  },
+  {
+    "id": "itm_hotchoco_hotcoffee",
+    "name": "Hot Chocolate",
+    "category": "Coffee",
+    "pricePaise": 10000
+  },
+  {
+    "id": "itm_regular_coldcoffee",
+    "name": "Regular Cold Coffee",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_hazelnut_coldcoffee",
+    "name": "Hazelnut Cold Coffee",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_butterscotch_coldcoffee",
+    "name": "Butter Scotch Cold Coffee",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_irish_coldcoffee",
+    "name": "Irish Cold Coffee",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_cookie_coldcoffee",
+    "name": "Cookie Crumble Frappe",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_caramel_coldcoffee",
+    "name": "Caramel Frappe",
+    "category": "Coffee",
+    "pricePaise": 11000
+  },
+  {
+    "id": "itm_mocha_coldcoffee",
+    "name": "Mocha Frappe",
+    "category": "Coffee",
+    "pricePaise": 11000
   }
 ]
